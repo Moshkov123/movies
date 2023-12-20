@@ -16,9 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+
+Route::get('/', [VideoController::class, 'main']);
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/addmovie', [AdminController::class, 'index'])->name('addmovie');

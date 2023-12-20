@@ -54,17 +54,26 @@ class AdminController extends Controller
         $descriptionValidation = $request->validate([
             'description' => 'required',
         ]);
-
         $movie = new Movies();
+        $title_de=  Movies::where('title_de', $request->input('title_de'))->first();
+        $title_ru=  Movies::where('title_ru', $request->input('title_ru'))->first();
+        $video=  Movies::where('video', $request->input('video'))->first();
+
+        if (!$title_ru && !$video && !$title_de) {
+            $movie->title_de = $request->input('title_de');
+            $movie->title_ru = $request->input('title_ru');
+            $movie->video= $request->input('video');
+        } else {
+            return back()->with('error', 'Видео уже существует с таким заголовком в базе данных.');
+        }
+
+      
         $movie->season = $request->input('season');
         $movie->number = $request->input('number');
-        $movie->title_ru = $request->input('title_ru');
-        $movie->title_de = $request->input('title_de');
-        $movie->video= $request->input('video');
         $movie->description = $request->input('description');
         $movie->save();
 
-        return redirect()->route('addmovie');
+        return redirect()->route('addmovie')->with('success', 'Видео успешно загружено!');
 
     }
 }
