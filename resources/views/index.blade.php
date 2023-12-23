@@ -113,17 +113,18 @@
 </body>
 
 <script>
-    function toggleEpisodes(season) {
-        var episodes = document.getElementById('episodes_' + season);
-        var arrow = document.querySelector('.season-header[onclick="toggleEpisodes(\'' + season + '\')"] .arrow');
-        if (episodes.style.disp "none") {
-            episodes.style.display = "block";
-            arrow.textContent = "🡹"; // Change the arrow to indicate expanded state
-        } else {
-            episodes.style.display = "none";
-            arrow.textContent = "🡻"; // Change the arrow to indicate collapsed state
-        }
+   function toggleEpisodes(season) {
+    var episodes = document.getElementById('episodes_' + season);
+    var arrow = document.querySelector('.season-header[onclick="toggleEpisodes(\'' + season + '\')"] .arrow');
+    if (episodes.style.display === "none") {
+        episodes.style.display = "block";
+        arrow.textContent = "🡹"; // Change the arrow to indicate expanded state
+    } else {
+        episodes.style.display = "none";
+        arrow.textContent = "🡻"; // Change the arrow to indicate collapsed state
     }
+}
+
 </script>
 
 </html>
