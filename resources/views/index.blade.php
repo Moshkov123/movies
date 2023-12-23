@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Laravel</title>
+    <title>Die Deutschen</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet">
@@ -66,35 +66,43 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                @foreach($seasons as $season)
-          <div class="bg-blue-200 p-4 rounded-lg mt-5 mb-5 text-center font-bold text-2xl">
-            Сезон {{ $season }}
-          </div>
+                    @foreach($seasons as $season)
+                    <div class="bg-blue-200 p-4 rounded-lg mt-5 mb-5 text-center font-bold text-2xl season-header"
+                        onclick="toggleEpisodes('{{ $season }}')" style="user-select: none;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="user-select: none;">Сезон {{ $season }}</span>
+                            <div style="user-select: none;" class="arrow">🡻</div>
+                        </div>
+                    </div>
 
+                    <div id="episodes_{{ $season }}" style="display: none;">
+                        <div class="grid grid-cols gap-2">
+                            @foreach($movies as $movie)
+                            @if($movie->season === $season)
+                            <div class="relative bg-gray-200 rounded-lg p-4">
+                                <p class="text-sm sm:text-base md:text-lg font-extrabold w-full cursor-pointer">Эпизод
+                                    {{
+                                    $movie->number }}</p>
+                                <div class="embed-responsive embed-responsive-16by9 relative w-full overflow-hidden"
+                                    style="padding-top: 56.25%">
+                                    <iframe
+                                        class="embed-responsive-item absolute bottom-0 left-0 right-0 top-0 h-full w-full"
+                                        src="{{ $movie->video }}" frameborder="0" allowfullscreen=""></iframe>
+                                </div>
+                                <div class="style-scope ytd-watch-metadata">
+                                    <p class="text-base sm:text-lg md:text-xl w-full cursor-pointer overflow-hidden"
+                                        style="max-height: 3.5em;">{{ $movie->title_ru }}</p>
+                                    <p class="text-base sm:text-lg md:text-xl w-full cursor-pointer overflow-hidden"
+                                        style="max-height: 3.5em;">{{ $movie->title_de }}</p>
+                                </div>
+                                <!-- <p class="descr">{{ $movie->description }}</p> -->
+                            </div>
+                            @endif
+                            @endforeach
+                        </div>
 
-          <div class="grid grid-cols gap-2">
-            @foreach($movies as $movie)
-            @if($movie->season === $season)
-            <div class="relative bg-gray-200 rounded-lg p-4">
-              <p class="text-sm sm:text-base md:text-lg font-extrabold w-full cursor-pointer">Эпизод {{
-                $movie->number }}</p>
-              <div class="embed-responsive embed-responsive-16by9 relative w-full overflow-hidden"
-                style="padding-top: 56.25%">
-                <iframe class="embed-responsive-item absolute bottom-0 left-0 right-0 top-0 h-full w-full"
-                  src="{{ $movie->video }}" frameborder="0" allowfullscreen=""></iframe>
-              </div>
-              <div class="style-scope ytd-watch-metadata">
-                <p class="text-base sm:text-lg md:text-xl w-full cursor-pointer overflow-hidden"
-                  style="max-height: 3.5em;">{{ $movie->title_ru }}</p>
-                <p class="text-base sm:text-lg md:text-xl w-full cursor-pointer overflow-hidden"
-                  style="max-height: 3.5em;">{{ $movie->title_de }}</p>
-              </div>
-              <!-- <p class="descr">{{ $movie->description }}</p> -->
-            </div>
-            @endif
-            @endforeach
-          </div>
-          @endforeach
+                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -103,5 +111,19 @@
     </div>
     </div>
 </body>
+
+<script>
+    function toggleEpisodes(season) {
+        var episodes = document.getElementById('episodes_' + season);
+        var arrow = document.querySelector('.season-header[onclick="toggleEpisodes(\'' + season + '\')"] .arrow');
+        if (episodes.style.disp "none") {
+            episodes.style.display = "block";
+            arrow.textContent = "🡹"; // Change the arrow to indicate expanded state
+        } else {
+            episodes.style.display = "none";
+            arrow.textContent = "🡻"; // Change the arrow to indicate collapsed state
+        }
+    }
+</script>
 
 </html>
