@@ -47,26 +47,34 @@ class AdminController extends Controller
         $title_deValidation = $request->validate([
             'title_de' => 'required',
         ]);
-        $videoValidation = $request->validate([
-            'video' => 'required',
-        ]);
-
         $descriptionValidation = $request->validate([
             'description' => 'required',
         ]);
         $movie = new Movies();
+        $movie = new Movies();
         $title_de=  Movies::where('title_de', $request->input('title_de'))->first();
         $title_ru=  Movies::where('title_ru', $request->input('title_ru'))->first();
-        $video=  Movies::where('video', $request->input('video'))->first();
+       
 
-        if (!$title_ru && !$video && !$title_de) {
-            $movie->title_de = $request->input('title_de');
-            $movie->title_ru = $request->input('title_ru');
-            $movie->video= $request->input('video');
+        if(!empty($request->input('video'))){
+            $video =Movies::where('video', $request->input('video'))->first();
+
+            if (!$title_ru && !$video && !$title_de) {
+                $movie->title_de = $request->input('title_de');
+                $movie->title_ru = $request->input('title_ru');
+                $movie->video= $request->input('video');
+            } else {
+                return back()->with('error', 'Видео уже существует с таким заголовком в базе данных.');
+            }
         } else {
-            return back()->with('error', 'Видео уже существует с таким заголовком в базе данных.');
+            if (!$title_ru  && !$title_de) {
+                $movie->title_de = $request->input('title_de');
+                $movie->title_ru = $request->input('title_ru');
+                $movie->video= " ";
+            } else {
+                return back()->with('error', 'Видео уже существует с таким заголовком в базе данных.');
+            }
         }
-
       
         $movie->season = $request->input('season');
         $movie->number = $request->input('number');
