@@ -5,7 +5,6 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     @foreach($seasons as $season)
                     <x-seasons :season="$season" :movies="$movies" />
-
                     @endforeach
                 </div>
             </div>
