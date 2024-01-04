@@ -12,7 +12,7 @@
         </div>
     </div>
 </div>
-
+<div id="content">
 <div id="episodes_{{ $season }}" style="display: none;">
     <div class="grid grid-cols gap-2">
         @foreach($movies as $movie)
@@ -22,5 +22,5 @@
         @endforeach
     </div>
 </div>
-
+</div>
 

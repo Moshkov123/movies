@@ -7,6 +7,7 @@
                     <x-seasons :season="$season" :movies="$movies" />
                     @endforeach
                 </div>
+                
             </div>
         </div>
     </div>

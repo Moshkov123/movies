@@ -70,13 +70,14 @@ class AdminController extends Controller
             if (!$title_ru  && !$title_de) {
                 $movie->title_de = $request->input('title_de');
                 $movie->title_ru = $request->input('title_ru');
-                $movie->video= " ";
+                $movie->video=" ";
             } else {
                 return back()->with('error', 'Видео уже существует с таким заголовком в базе данных.');
             }
         }
       
         $movie->season = $request->input('season');
+        $movie->subtitles = "null";
         $movie->number = $request->input('number');
         $movie->description = $request->input('description');
         $movie->save();
