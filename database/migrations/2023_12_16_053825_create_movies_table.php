@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('title_ru');
             $table->string('title_de');
             $table->string('video');
+            $table->string('subtitles');
             $table->string('description');
             $table->timestamps();
         });
