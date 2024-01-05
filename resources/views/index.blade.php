@@ -62,17 +62,14 @@
         </div>
         </div>
     </nav>
-
-
-
 <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900 dark:text-gray-100">
-                <div class="flex justify-center gap-4">
-                    <button onclick="subtitles()" class="bg-blue-200 hover:bg-blue-250 text-black font-bold py-2 px-4 rounded">Субтитры</button>
-                    <button onclick="translation()" class="bg-blue-200 hover:bg-blue-250 text-black font-bold py-2 px-4 rounded">Закадровый перевод</button>
-                </div>
+            <div class="flex justify-center gap-4">
+  <button onclick="subtitles()" class="bg-blue-200 hover:bg-blue-250 focus:outline-none focus:bg-blue-500  focus:ring-2 focus:ring-blue-500 focus:text-white font-bold py-2 px-5 rounded transition-colors">Субтитры</button>
+  <button onclick="translation()" class="bg-blue-200 hover:bg-blue-250 focus:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:text-white font-bold py-2 px-5 rounded transition-colors">Закадровый перевод</button>
+</div>
                 @foreach($seasons as $season)
                 <x-seasons :season="$season" :movies="$movies" />
                 @endforeach
@@ -80,10 +77,6 @@
         </div>
     </div>
 </div>
-
-
-
-
 </body>
 <script>
     function toggleEpisodes(season) {
