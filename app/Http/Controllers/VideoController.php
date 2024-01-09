@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Chronology;
 use App\Models\Movies;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,8 @@ class VideoController extends Controller
     public function index()
     {
         $movies = new Movies();
-        $seasons = []; // Initialize the $seasons array
+        $seasons = []; 
+        $year = [];
 
         // Fetch all movies
         $allMovies = $movies->orderBy('number')->get();
@@ -24,8 +26,16 @@ class VideoController extends Controller
                 }
             }
         }
+        $chronologies = Chronology::all();
 
-        return view('movies', ['movies' => $allMovies, 'seasons' => $seasons]);
+        // Iterate over each chronology to extract the year
+        foreach ($chronologies as $chronology) {
+            if (!in_array($chronology->chronology, $year)) {
+                $year[] = $chronology->chronology;
+            }
+        }
+    
+        return view('movies', ['movies' => $allMovies, 'seasons' => $seasons, 'chronologies' => $chronologies, 'years' => $year]);
     }
 
     public function main()

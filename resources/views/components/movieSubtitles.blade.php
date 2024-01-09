@@ -17,7 +17,7 @@
         <div class="grid grid-cols gap-2">
             @foreach($movies as $movie)
             @if($movie->season === $season)
-            <x-movie :movie="$movie" />
+            <x-subtitles :movie="$movie" />
             @endif
             @endforeach
         </div>
