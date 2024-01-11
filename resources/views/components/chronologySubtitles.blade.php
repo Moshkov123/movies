@@ -18,7 +18,7 @@
         @foreach($chronologies as $chronologie)
             @foreach($movies as $movie)
                 @if($movie->chronology > $chronologie->sumMin && $movie->chronology < $chronologie->sumMax && $chronologie->chronology ==$year )
-                    <x-movie :movie="$movie" /> 
+                <x-subtitles :movie="$movie" />
                 @endif
             @endforeach
         @endforeach

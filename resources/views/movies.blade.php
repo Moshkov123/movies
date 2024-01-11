@@ -3,10 +3,10 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 text-gray-900 dark:text-gray-100">
-          <div class="flex justify-center gap-4">
-          <button onclick="subtitles()" class="bg-blue-200 hover:bg-blue-250 focus:outline-none focus:bg-blue-500  focus:ring-2 focus:ring-blue-500 focus:text-white font-bold py-2 px-5 rounded transition-colors">Субтитры</button>
-  <button onclick="translation()" class="bg-blue-200 hover:bg-blue-250 focus:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:text-white font-bold py-2 px-5 rounded transition-colors">Закадровый перевод</button>
-          </div>
+        <div class="flex justify-center gap-4">
+  <button onclick="toggleSubtitles()" id="Subtitles" class="bg-blue-200 hover:bg-blue-250 focus:outline-none focus:bg-blue-500 focus:ring-2 focus:ring-blue-500 focus:text-white font-bold py-2 px-5 rounded transition-colors">С Озвучкой</button>
+</div>
+
           <button onclick="season()"
             class="bg-blue-200 hover:bg-blue-250 focus:outline-none focus:bg-blue-500  focus:ring-2 focus:ring-blue-500 focus:text-white font-bold py-2 px-5 rounded transition-colors">По
             сезонам</button>
@@ -29,8 +29,8 @@
   </div>
 </x-app-layout>
 <script>
-  var globalVar = true;
-
+var number =0;
+var subtitles = false;
   function toggleEpisodes(god) {
     var episodes = document.getElementById('episodes_' + god);
     var arrow = document.querySelector('.season-header[onclick="toggleEpisodes(\'' + god + '\')"] .arrow');
@@ -48,27 +48,48 @@
   }
 
   function chronology() {
-    document.getElementById('content').innerHTML = `  @foreach($years as $year)
-        <x-chronology :year="$year" :chronologies="$chronologies" :movies="$movies" />
+    number =1;
+    if (subtitles){
+      document.getElementById('content').innerHTML = `  @foreach($years as $year)
+      <x-chronologySubtitles :year="$year" :chronologies="$chronologies" :movies="$movies" />
     @endforeach`;
+    }
+    else {   
+      document.getElementById('content').innerHTML =  `  @foreach($years as $year)
+      <x-chronology  :year="$year" :chronologies="$chronologies" :movies="$movies" />
+    @endforeach`;
+  };
+
   }
   function season() {
-    document.getElementById('content').innerHTML = `@foreach($seasons as $season)
-                <x-seasons :season="$season" :movies="$movies" />
-                @endforeach`;
-  }
-  function subtitles() {
-    
-    document.getElementById('content').innerHTML = ` @foreach($seasons as $season)
+    number =0;
+    if (subtitles){
+      document.getElementById('content').innerHTML = ` @foreach($seasons as $season)
                 <x-movieSubtitles  :season="$season" :movies="$movies" />
                 @endforeach`;
-  }
-  function translation() {
- 
-    document.getElementById('content').innerHTML = `@foreach($seasons as $season)
+    }
+    else {   
+      document.getElementById('content').innerHTML = `@foreach($seasons as $season)
                 <x-seasons :season="$season" :movies="$movies" />
                 @endforeach`;
+  };
   }
+  function toggleSubtitles() {
+  subtitles = !subtitles;
+  if (  subtitles){
+    document.getElementById('Subtitles').innerText ="С Субтитрами"
+  }else {
+    document.getElementById('Subtitles').innerText ="С Озвучкой"
+  }
+
+  if (number === 0) {
+    season();
+  } else {
+    chronology();
+  }
+}
+
+ 
 </script>
 
 <style>
