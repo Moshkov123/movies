@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('video');
             $table->string('subtitles');
             $table->string('description');
+            $table->string('hero');
             $table->integer('chronology');
             $table->timestamps();
         });

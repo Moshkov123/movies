@@ -14,8 +14,7 @@ class VideoController extends Controller
         $seasons = []; 
         $year = [];
 
-        // Fetch all movies
-        $allMovies = $movies->orderBy('number')->get();
+        $allMovies = $movies->orderBy('season')->orderBy('number')->get();
 
         // Check if movies are retrieved successfully
         if ($allMovies) {

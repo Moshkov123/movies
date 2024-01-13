@@ -103,10 +103,13 @@ class AdminController extends Controller
         $movie->season = $request->input('season');
         $movie->chronology = $request->input('dateone') + $request->input('datetwo');
         $movie->number = $request->input('number');
+        $movie->hero =" NULL";
         $movie->description = $request->input('description');
         $movie->save();
 
         return redirect()->route('addmovie')->with('success', 'Видео успешно загружено!');
 
     }
+
+    
 }
