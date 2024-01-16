@@ -15,16 +15,17 @@
             <span class="block sm:inline">{{ session('success') }}</span>
           </div>
           @endif
+          
           <div class="flex flex-col">
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-                <div class="overflow-hidden" id="sort">
-                  <x-chronology-management :chronologies="$chronologies" />
+                <div class="overflow-hidden">
+                <x-control-chronologies :chronologies="$chronologies" />
                 </div>
               </div>
             </div>
           </div>
-          <button onclick="navigateTo('{{ route('management-edit') }}')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Редактировать</button>
+          <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"  onclick="navigateTo('{{ route('management') }}')"> Отмена</button>
         </div>
       </div>
     </div>
@@ -34,4 +35,4 @@
     function navigateTo(url) {
         window.location.href = url;
     }
-</script>>
+</script>

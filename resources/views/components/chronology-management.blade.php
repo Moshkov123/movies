@@ -8,15 +8,18 @@
               <th scope="col" class="px-6 py-4">Min sum дата</th>
               <th scope="col" class="px-6 py-4">Max sum дата</th>
               <th scope="col" class="px-6 py-4">даты</th>
-              <th scope="col" class="px-6 py-4">кнопка редактировать</th>
             </tr>
           </thead>
           <tbody>
           @foreach($chronologies as $chronologie)
-                    <x-Edit-control-chronologies :chronologie="$chronologie" />
-                    @endforeach
-          </tbody>
+                        <tr class="border-b bg-neutral-100">
+                          <td class="whitespace-nowrap px-6 py-4">{{ $chronologie->sumMin }}</td>
+                          <td class="whitespace-nowrap px-6 py-4">{{ $chronologie->sumMax }}</td>
+                          <td class="whitespace-nowrap px-6 py-4">{{ $chronologie->chronology }}</td>
 
+                        </tr>
+                        @endforeach
+          </tbody>
         </table>
       </div>
     </div>

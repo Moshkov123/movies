@@ -16,6 +16,14 @@ class ManagementController extends Controller
 
     return view('management', ['movies' => $allMovies, 'chronologies' => $chronologies]);
 }
+public function indexEdit()
+{
+    $movies = new Movies();
+    $allMovies = $movies->orderBy('season')->orderBy('number')->get();
+    $chronologies = Chronology::all();
+
+    return view('management-edit', ['movies' => $allMovies, 'chronologies' => $chronologies]);
+}
 public function update(Request $request, $id)
 {
     $validatedData = $request->validate([
@@ -30,7 +38,7 @@ public function update(Request $request, $id)
     $chronology->chronology = $validatedData['chronology'];
     $chronology->save();
 
-    return redirect()->route('management')->with('success', 'Row updated successfully');
+    return redirect()->route('management')->with('success', 'Content updated successfully');
 }
 
 }

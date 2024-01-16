@@ -13,7 +13,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/addmovie', [AdminController::class, 'index'])->name('addmovie');
     Route::post('/addmovie', [AdminController::class, 'store']);
     Route::get('/management', [ManagementController::class, 'index'])->name('management');
-    Route::put('/management/{id}', [ManagementController::class, 'update'])->name('management.update');
+    Route::get('/management-edit', [ManagementController::class, 'indexEdit'])->name('management-edit');
+    Route::put('/management-edit/{id}', [ManagementController::class, 'update'])->name('management.update');
+
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
