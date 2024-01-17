@@ -16,9 +16,8 @@
                           <td class="whitespace-nowrap px-6 py-4">{{ $chronologie->sumMin }}</td>
                           <td class="whitespace-nowrap px-6 py-4">{{ $chronologie->sumMax }}</td>
                           <td class="whitespace-nowrap px-6 py-4">{{ $chronologie->chronology }}</td>
-
                         </tr>
-                        @endforeach
+          @endforeach
           </tbody>
         </table>
       </div>

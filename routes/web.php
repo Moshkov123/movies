@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ManagementController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\СontrolController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -15,7 +16,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/management', [ManagementController::class, 'index'])->name('management');
     Route::get('/management-edit', [ManagementController::class, 'indexEdit'])->name('management-edit');
     Route::put('/management-edit/{id}', [ManagementController::class, 'update'])->name('management.update');
-
+    Route::get('/control-movies', [СontrolController::class, 'index'])->name('control-movies');
+    Route::get('/movies-edit/{id}', [СontrolController::class, 'indexEdit'])->name('movies-edit');
+    Route::put('/movies-edit/{id}', [СontrolController::class, 'update'])->name('movies-edit.update');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
