@@ -38,6 +38,7 @@ public function update(Request $request, $id)
     $movie->hero =" NULL";
     $movie->chronology = $request->input('dateone') + $request->input('datetwo');
     $movie->save();
+    
 
     return redirect()->route('control-movies')->with('success', 'Content updated successfully');
 }
