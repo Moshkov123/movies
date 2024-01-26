@@ -13,7 +13,7 @@ class VideoController extends Controller
         $movies = new Movies();
         $seasons = []; 
         $year = [];
-
+        $allchronology =$movies->orderBy('chronology')->get();
         $allMovies = $movies->orderBy('season')->orderBy('number')->get();
 
         // Check if movies are retrieved successfully
@@ -34,15 +34,18 @@ class VideoController extends Controller
             }
         }
     
-        return view('movies', ['movies' => $allMovies, 'seasons' => $seasons, 'chronologies' => $chronologies, 'years' => $year]);
+        return view('movies', ['movies' => $allMovies, 'seasons' => $seasons, 'allchronology'=>$allchronology, 'chronologies' => $chronologies, 'years' => $year]);
     }
 
     public function main()
     {
         $movies = new Movies();
+        $chronologies = Chronology::all();
         $seasons = []; 
+        $year = [];
 
         $allMovies = $movies->orderBy('number')->get();
+        $allchronology =$movies->orderBy('chronology')->get();
 
         // Check if movies are retrieved successfully
         if ($allMovies) {
@@ -53,7 +56,14 @@ class VideoController extends Controller
                 }
             }
         }
-        return view('index', ['movies' => $allMovies, 'seasons' => $seasons]);
+
+        // Iterate over each chronology to extract the year
+        foreach ($chronologies as $chronology) {
+            if (!in_array($chronology->chronology, $year)) {
+                $year[] = $chronology->chronology;
+            }
+        }
+        return view('index', ['movies' => $allMovies,'allchronology'=>$allchronology, 'seasons' => $seasons, 'chronologies' => $chronologies, 'years' => $year]);
     }
 
 

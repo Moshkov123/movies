@@ -16,7 +16,7 @@
 <div id="episodes_{{  $year }}" style="display: none;">
     <div class="grid grid-cols gap-2" id="replacement">
         @foreach($chronologies as $chronologie)
-            @foreach($movies as $movie)
+            @foreach($allchronology as $movie)
                 @if($movie->chronology > $chronologie->sumMin && $movie->chronology < $chronologie->sumMax && $chronologie->chronology ==$year )
                     <x-movie :movie="$movie" /> 
                 @endif
