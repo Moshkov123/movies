@@ -96,21 +96,17 @@
 <style>
   .splide__track {
     height: 450px;
-
   }
-
   @media (max-width: 12000000px)and (min-width: 1024px) {
     .grid-cols {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
-
   @media (max-width: 1024px) and (min-width: 640px) {
     .grid-cols {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
-
   @media (max-width: 640px) {
     .grid-cols {
       grid-template-columns: repeat(1, minmax(0, 1fr));

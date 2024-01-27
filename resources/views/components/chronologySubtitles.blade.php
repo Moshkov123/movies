@@ -13,7 +13,7 @@
     </div>
 </div>
 
-<div id="episodes_{{  $year }}" style="display: none;">
+<div id="episodes_{{  $year }}" style="display: block;">
     <div class="grid grid-cols gap-2" id="replacement">
         @foreach($chronologies as $chronologie)
             @foreach($allchronology as $movie)

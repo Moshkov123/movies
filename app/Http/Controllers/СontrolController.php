@@ -28,13 +28,13 @@ public function update(Request $request, $id)
         'season' => 'required',
     ]);
     $movie = Movies::find($id);
-    $movie->season = $validatedData['number'];
+    $movie->number = $validatedData['number'];
     $movie->season = $validatedData['season'];
     $movie->title_ru = $validatedData['title_ru'];
     $movie->title_de = $validatedData['title_de'];
     $movie->description = $validatedData['description'];
-    $movie->video= $request->input('video');
-    $movie->subtitles = $request->input('subtitles');
+    $movie->video = $request->input('video') ? $request->input('video') : '';
+    $movie->subtitles = $request->input('subtitles') ? $request->input('subtitles') : '';    
     $movie->hero =" NULL";
     $movie->chronology = $request->input('dateone') + $request->input('datetwo');
     $movie->save();

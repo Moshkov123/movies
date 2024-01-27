@@ -13,7 +13,7 @@
     </div>
 </div>
 
-    <div id="episodes_{{ $season }}" style="display: none;">
+    <div id="episodes_{{ $season }}" style="display: block;">
         <div class="grid grid-cols gap-2">
             @foreach($movies as $movie)
             @if($movie->season === $season)
