@@ -9,7 +9,16 @@
         <p class="text-base sm:text-lg md:text-xl w-full cursor-pointer overflow-hidden" style="max-height: 3.5em;">{{ $movie->title_ru }}</p>
         <p class="text-base sm:text-lg md:text-xl w-full cursor-pointer overflow-hidden" style="max-height: 3.5em;">{{ $movie->title_de }}</p>
       </div>
+      <form action="{{ route('movies-delete', ['id' => $movie->id]) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Удалить</button>
+                                </form>
       <button onclick="navigateToEdit('{{ route('movies-edit', ['id' => $movie->id]) }}')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Редактировать</button>
     </div>
   @endforeach
 </div>
+
+<script>
+
+</script>

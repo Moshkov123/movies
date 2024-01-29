@@ -18,10 +18,17 @@ class СontrolController extends Controller
     $movie = Movies::find($id);
     return view('movies-edit', ['movie' => $movie]);
 }
+public function delete($id)
+    {
+        $movie = Movies::find($id);
+        if ($movie) {
+            $movie->delete();
+        }
+        return redirect()->route('control-movies');
+    }
 public function update(Request $request, $id)
 {
     $validatedData = $request->validate([
-        'description' => 'required',
         'title_de' => 'required',
         'number' => 'required',
         'title_ru' => 'required',
@@ -32,10 +39,9 @@ public function update(Request $request, $id)
     $movie->season = $validatedData['season'];
     $movie->title_ru = $validatedData['title_ru'];
     $movie->title_de = $validatedData['title_de'];
-    $movie->description = $validatedData['description'];
     $movie->video = $request->input('video') ? $request->input('video') : '';
     $movie->subtitles = $request->input('subtitles') ? $request->input('subtitles') : '';    
-    $movie->hero =" NULL";
+   
     $movie->chronology = $request->input('dateone') + $request->input('datetwo');
     $movie->save();
     
@@ -56,9 +62,6 @@ public function store(Request $request)
     ]);
     $title_deValidation = $request->validate([
         'title_de' => 'required',
-    ]);
-    $descriptionValidation = $request->validate([
-        'description' => 'required',
     ]);
     $movie = new Movies();
     $title_de=  Movies::where('title_de', $request->input('title_de'))->first();
@@ -113,8 +116,6 @@ public function store(Request $request)
     $movie->season = $request->input('season');
     $movie->chronology = $request->input('dateone') + $request->input('datetwo');
     $movie->number = $request->input('number');
-    $movie->hero =" NULL";
-    $movie->description = $request->input('description');
     $movie->save();
 
     return redirect()->route('addmovie')->with('success', 'Видео успешно загружено!');

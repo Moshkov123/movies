@@ -47,9 +47,7 @@ class AdminController extends Controller
         $title_deValidation = $request->validate([
             'title_de' => 'required',
         ]);
-        $descriptionValidation = $request->validate([
-            'description' => 'required',
-        ]);
+   
         $movie = new Movies();
         $title_de=  Movies::where('title_de', $request->input('title_de'))->first();
         $title_ru=  Movies::where('title_ru', $request->input('title_ru'))->first();
@@ -103,8 +101,6 @@ class AdminController extends Controller
         $movie->season = $request->input('season');
         $movie->chronology = $request->input('dateone') + $request->input('datetwo');
         $movie->number = $request->input('number');
-        $movie->hero =" NULL";
-        $movie->description = $request->input('description');
         $movie->save();
 
         return redirect()->route('addmovie')->with('success', 'Видео успешно загружено!');
