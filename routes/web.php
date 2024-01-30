@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [VideoController::class, 'main'])->name('index');
 
-Route::middleware(['auth', 'admin'])->group(function () {
+Route::middleware(['auth', 'admin', 'auth', 'verified'])->group(function () {
+    Route::get('/movies', [VideoController::class, 'index'])->name('movies');
     Route::get('/addmovie', [AdminController::class, 'index'])->name('addmovie');
     Route::post('/addmovie', [AdminController::class, 'store']);
     Route::get('/management', [ManagementController::class, 'index'])->name('management');
@@ -23,9 +24,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 });
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/movies', [VideoController::class, 'index'])->name('movies');
-});
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

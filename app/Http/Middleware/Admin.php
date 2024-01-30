@@ -22,7 +22,7 @@ class Admin
         }
         else
         {
-            abort(401);
+            return redirect()->route('index');
         }
     }
 }
