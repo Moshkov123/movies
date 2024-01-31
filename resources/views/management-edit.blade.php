@@ -45,7 +45,7 @@
         <td class="whitespace-nowrap px-6 py-4"><input type="text" name="sumMax" value="{{ $chronologie->sumMax }}" required></td>
         <td class="whitespace-nowrap px-6 py-4"><input type="text" name="chronology" value="{{ $chronologie->chronology }}" required></td>
         <td class="whitespace-nowrap px-6 py-4">
-            <button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded">Сохранить</button>
+            <button type="submit" class=" text-white font-bold py-2 px-4 rounded" style=" background-color: #4299e1;">Сохранить</button>
         </td>
     </tr>
 </form>
