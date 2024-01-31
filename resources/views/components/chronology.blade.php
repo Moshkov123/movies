@@ -1,4 +1,4 @@
-<div class="bg-blue-200 p-4 rounded-lg mt-5 mb-5 text-center font-bold text-2xl season-header"
+<div class="bg-green-600 p-4 rounded-lg mt-5 mb-5 text-center font-bold text-2xl season-header"
     onclick="toggleEpisodes('{{   $year }}')" style="user-select: none;">
     <div style="display: flex; justify-content: space-between; align-items: center;">
         <span style="user-select: none;"> {{ $year }}</span>

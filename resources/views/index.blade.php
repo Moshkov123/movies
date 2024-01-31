@@ -11,62 +11,213 @@
     <!-- Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
+        .block{
+            display: flex;
+            justify-content: space-between;
+        }
+        .block-right{
+                color: white;
+                padding: 0.75rem;
+                text-align: right;
+            }
         @media (max-width: 12000000px)and (min-width: 1024px) {
             .grid-cols {
                 grid-template-columns: repeat(3, minmax(0, 1fr));
             }
+            .block-right{
+                color: white;
+                padding: 0.75rem;
+                text-align: right;
+            }
+            .text1 {
+                font-size: 2.25rem;
+                line-height: 2.5rem;
+            }
+
+            .text2 {
+                font-size: 1.775rem;
+                line-height: 2.25rem;
+            }
         }
 
-        @media (max-width: 1024px) and (min-width: 640px) {
+        @media (max-width: 1024px) and (min-width: 890px) {
             .grid-cols {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
+
+            .text1 {
+                font-size: 1.775rem;
+                line-height: 2.25rem;
+            }
+
+            .text2 {
+                font-size: 1.5rem;
+                /* 24px */
+                line-height: 2rem;
+            }
         }
+        @media (max-width: 890px) and (min-width: 640px) {
+            .grid-cols {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .block-right{
+                color: white;
+                padding: 0.75rem;
+                text-align: left;
+                
+            }
+            .block{
+            display: flex;
+            flex-direction: column;
+            
+        }
+            .text1 {
+                font-size: 1.775rem;
+                line-height: 2.25rem;
+            }
+
+            .text2 {
+                font-size: 1.5rem;
+                /* 24px */
+                line-height: 2rem;
+            }
+        }
+
 
         @media (max-width: 640px) {
             .grid-cols {
                 grid-template-columns: repeat(1, minmax(0, 1fr));
             }
+            .block-right{
+                color: white;
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+                text-align: left;
+                font-size: 0.8rem;
+                /* 20px */
+                line-height: 1rem;
+            }
+            .text1 {
+                font-size: 1.05rem;
+                line-height: 1.5rem;
+            }
+            .block{
+            display: flex;
+            flex-direction: column;
+        }
+            .text2 {
+                font-size: 1.05rem;
+                /* 20px */
+                line-height: 1.5rem;
+                /* 28px */
+            }
         }
     </style>
 </head>
 
-<body class="antialiased">
+<body class="antialiased bg-gray-900">
     @if (Route::has('login'))
     @auth
     <x-nav />
-    @else
-    <x-header />
     @endif
     @endif
-    <div class="py-12">
+    <div class="bg-gray-800">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <div class="flex justify-center gap-4">
-                        <button onclick="toggleSubtitles()" id="Subtitles"
-                            class="bg-blue-200 hover:bg-blue-250 focus:outline-none focus:bg-blue-500 focus:ring-2 focus:ring-blue-500 focus:text-white font-bold py-2 px-5 rounded transition-colors">С
-                            Озвучкой</button>
+        <div class="pl-2 pr-2 bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+    
+                <div class="m-5">
+                    <img src="{{ asset('img/DD.jpg') }}" class="w-full">
+                </div>
+                <div class="block">
+                    <div class="p-2 text-gray-900 text-gray-900">
+                        <div class="bg-gray-800 text-white pl-5 pr-5 pb-2 pt-5 text-left" style="margin-top: -20px;">
+                            <h1 class="text1" style="white-space: nowrap;">Сериал об истории Германии</h1>
+                            <h2 class="text2" style="white-space: nowrap;">Немцы / Die Deutschen</h2>
+                            <p style="white-space: nowrap;">Впервые на русском языке</p>
+                        </div>
                     </div>
+                    <div class="block-right">
+                        <nobr>Перейти на <a class="color" style="color: #d55601;"
+                                href="http://diedeutschen.zdf.de/">официальную страницу</a> <span
+                                style="color:#556e8a;">(нем.)</span></nobr><br>
+                        <nobr>Материалы для <a class="" style="color: #d55601;"
+                                href="https://www.zdf.de/dokumentation/die-deutschen/lehrermaterialien-fuer-die-zdf-dokumentarreihe-die-deutschen-100.html">школьников</a>
+                            <span style="color:#556e8a;">(нем.)</span>
+                        </nobr><br>
+                        <nobr>Сериал на сайте <a class="" style="color: #d55601;"
+                                href="http://www.kinopoisk.ru/film/654570/">Kinopoisk</a> и <a class="acont-top"
+                                style="color: #d55601;" href="http://www.imdb.com/title/tt1236350/">IMDb</a></nobr><br>
+                        <nobr>Связаться с <a class="" style="color: #d55601;"
+                                href="https://vk.com/diedeutschen">переводчиком</a></nobr><br>
+                    </div>
+                </div>
+                <div class="flex justify-center gap-4 pb-5">
+  <a href="http://vk.com/ru_diedeutschen" class="relative inline-block rounded-lg overflow-hidden">
+    <button type="button" data-te-ripple-init data-te-ripple-color="light"
+      class="w-24 h-12 sm:w-32 sm:h-16 flex items-center justify-center text-sm font-medium uppercase text-white transition duration-150 ease-in-out bg-gray-900 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
+      style="background-color: #45668e">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+        <path class="st0"
+          d="M13.162 18.994c.609 0 .858-.406.851-.915-.031-1.917.714-2.949 2.059-1.604 1.488 1.488 1.796 2.519 3.603 2.519h3.2c.808 0 1.126-.26 1.126-.668 0-.863-1.421-2.386-2.625-3.504-1.686-1.565-1.765-1.602-.313-3.486 1.801-2.339 4.157-5.336 2.073-5.336h-3.981c-.772 0-.828.435-1.103 1.083-.995 2.347-2.886 5.387-3.604 4.922-.751-.485-.407-2.406-.35-5.261.015-.754.011-1.271-1.141-1.539-.629-.145-1.241-.205-1.809-.205-2.273 0-3.841.953-2.95 1.119 1.571.293 1.42 3.692 1.054 5.16-.638 2.556-3.036-2.024-4.035-4.305-.241-.548-.315-.974-1.175-.974h-3.255c-.492 0-.787.16-.787.516 0 .602 2.96 6.72 5.786 9.77 2.756 2.975 5.48 2.708 7.376 2.708z" />
+      </svg>
+    </button>
+  </a>
+  <!-- Youtube -->
+  <a href="https://www.youtube.com/user/igakuz" class="relative inline-block rounded-lg overflow-hidden">
+    <button type="button" data-te-ripple-init data-te-ripple-color="light"
+      class="w-24 h-12 sm:w-32 sm:h-16 flex items-center justify-center text-sm font-medium uppercase text-white transition duration-150 ease-in-out bg-red-600 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
+      style="background-color: #ff0000">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+        <path
+          d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+      </svg>
+    </button>
+  </a>
+</div>
+
+
+                <div class="text-white pl-5 pr-5" style="font-family: Arial;">
+                    <p class="sm:text-base md:text-lg lg:text-xl xl:text-2xl">Путешествие сквозь 1200&nbsp;лет немецкой
+                        истории, с VIII до первой четверти XX&nbsp;века. 20&nbsp;красочных документально-игровых фильмов
+                        (2&nbsp;сезона по 10&nbsp;серий) расскажут о главных личностях и событиях, оставивших свой след
+                        в истории Германии и всей Европы: от Карла Великого до Карла Маркса и от церковной Реформации до
+                        Первой мировой войны. Каждая серия посвящена одной исторической личности и показывает не только
+                        её роль в прошлом, но и значение в настоящем.</p>
+                    <p class="pt-5 pb-5 sm:text-base md:text-lg lg:text-xl xl:text-2xl">Сериал произведен Вторым каналом
+                        немецкого телевидения (<a style="color: #d55601;" href="https://www.zdf.de/">ZDF</a>) и впервые
+                        публикуется на русском языке. Перевод доступен в двух вариантах: закадровое озвучание или
+                        субтитры специально для изучающих немецкий язык. Перевод этого сериала — любительский
+                        некоммерческий проект. Озвучание частично сделано на пожертвования зрителей Ютуб-канала&nbsp;<a
+                            style="color: #d55601;" href="https://www.youtube.com/user/igakuz">igakuz</a>.</p>
+                </div>
+                <div class="flex  justify-center">
+                    <button onclick="toggleSubtitles()" id="Subtitles" class="bg-gray-500 text-white focus:outline-none focus:bg-gray-500 focus:ring-2 focus:ring-gray-500
+                    focus:text-white font-bold py-2 px-5 rounded transition-colors">С
+                        Озвучкой</button>
+                </div>
+                <p class="p-5 text-white sm:text-base md:text-lg lg:text-xl xl:text-2xl flex  justify-center">
+                    Сортировать по</p>
+                <div class="flex justify-center gap-4 p-3">
                     <button onclick="season()"
-                        class="bg-blue-200 hover:bg-blue-250 focus:outline-none focus:bg-blue-500  focus:ring-2 focus:ring-blue-500 focus:text-white font-bold py-2 px-5 rounded transition-colors">По
+                        class="bg-gray-500 text-white focus:outline-none focus:bg-gray-500 focus:ring-2 focus:ring-gray-500 focus:text-white font-bold py-2 px-5 rounded transition-colors">
                         сезонам</button>
                     <button onclick="chronology()"
-                        class="bg-blue-200 hover:bg-blue-250 focus:outline-none focus:bg-blue-500  focus:ring-2 focus:ring-blue-500 focus:text-white font-bold py-2 px-5 rounded transition-colors">По
+                        class="bg-gray-500 text-white focus:outline-none focus:bg-gray-500 focus:ring-2 focus:ring-gray-500 focus:text-white font-bold py-2 px-5 rounded transition-colors">
                         Хронологии</button>
-                    <div id="content">
+                </div>
 
-                        @foreach($seasons as $season)
-                        <x-seasons :season="$season" :movies="$movies" />
-                        @endforeach
-                    </div>
+                <div id="content">
+                    @foreach($seasons as $season)
+                    <x-seasons :season="$season" :movies="$movies" />
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
 </body>
 <script>
-    var number = 0r subtitles = false;
+    var number = 0;
+    var subtitles = false;
     function toggleEpisodes(god) {
         var episodes = document.getElementById('episodes_' + god);
         var arrow = document.querySelector('.season-header[onclick="toggleEpisodes(\'' + god + '\')"] .arrow');
@@ -123,5 +274,4 @@
         }
     }
 </script>
-
 </html>
