@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
 <x-app-layout>
   <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
