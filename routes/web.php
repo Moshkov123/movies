@@ -17,7 +17,7 @@ Route::middleware(['auth', 'admin', 'auth', 'verified'])->group(function () {
     Route::get('/management', [ManagementController::class, 'index'])->name('management');
     Route::get('/management-edit', [ManagementController::class, 'indexEdit'])->name('management-edit');
     Route::put('/management-edit/{id}', [ManagementController::class, 'update'])->name('management.update');
-    Route::get('/control-movies', [СontrolController::class, 'index'])->name('control-movies');
+
     Route::delete('/movies-delete/{id}', [СontrolController::class, 'delete'])->name('movies-delete');
     Route::get('/movies-edit/{id}', [СontrolController::class, 'indexEdit'])->name('movies-edit');
     Route::put('/movies-edit/{id}', [СontrolController::class, 'update'])->name('movies-edit.update');

@@ -11,7 +11,7 @@ class СontrolController extends Controller
     {
         $movies = new Movies();
         $allMovies = $movies->orderBy('created_at')->get();
-        return view('control-movies', ['movies' => $allMovies ]);
+        return view('movies', ['movies' => $allMovies ]);
     }
     public function indexEdit($id)
 {
@@ -24,7 +24,7 @@ public function delete($id)
         if ($movie) {
             $movie->delete();
         }
-        return redirect()->route('control-movies');
+        return redirect()->route('movies');
     }
 public function update(Request $request, $id)
 {
@@ -46,7 +46,7 @@ public function update(Request $request, $id)
     $movie->save();
     
 
-    return redirect()->route('control-movies')->with('success', 'Content updated successfully');
+    return redirect()->route('movies')->with('success', 'Content updated successfully');
 }
 
 public function store(Request $request)

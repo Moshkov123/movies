@@ -15,7 +15,6 @@
             <span class="block sm:inline">{{ session('success') }}</span>
           </div>
           @endif
-          <button onclick="navigateTo('{{ route('management') }}')" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Хронология</button>
          
           <x-control :movies="$movies"/>
          
