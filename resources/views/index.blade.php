@@ -17,6 +17,7 @@
             display: flex;
             justify-content: space-between;
         }
+
         .container {
             display: flex;
             flex-direction: column;
@@ -128,6 +129,7 @@
             .block {
                 display: flex;
                 flex-direction: column;
+                
             }
 
             .text2 {
@@ -214,30 +216,30 @@
                         некоммерческий проект. Озвучание частично сделано на пожертвования зрителей Ютуб-канала&nbsp;<a
                             style="color: #d55601;" href="https://www.youtube.com/user/igakuz">igakuz</a>.</p>
                 </div>
-                
                 <div class="container gap-2 p-2">
-  <div class="text-white sm:text-base md:text-lg lg:text-xl xl:text-2xl">
-    Смотреть с:
-  </div>
-  <div class="flex gap-2">
-    <button onclick="togglevoiceover()" id="voiceover" class="bg-gray-500 text-white focus:outline-none focus:bg-gray-500 focus:ring-2 focus:ring-gray-500 focus:text-white font-bold py-2 px-5 rounded transition-colors">
-      Озвучкой
-    </button>
-    <button onclick="toggleSubtitles()" id="subtitles" class="bg-gray-500 text-white focus:outline-none focus:bg-gray-500 focus:ring-2 focus:ring-gray-500 focus:text-white font-bold py-2 px-5 rounded transition-colors">
-      Субтитрами
-    </button>
-  </div>
-</div>
-
+                    <div class="text-white sm:text-base md:text-lg lg:text-xl xl:text-2xl">
+                        Смотреть с:
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="togglevoiceover()" id="voiceover"
+                          style="background: rgb(66, 66, 66)"  class="text-white focus:text-white font-bold py-2 px-5 rounded transition-colors">
+                            Озвучкой
+                        </button>
+                        <button onclick="toggleSubtitles()" id="subtitles"
+                        style="background: #7f7f8f" class="text-white focus:text-white font-bold py-2 px-5 rounded transition-colors">
+                            Субтитрами
+                        </button>
+                    </div>
+                </div>
                 <div class="container gap-2 p-2">
                     <div class=" text-white sm:text-base md:text-lg lg:text-xl xl:text-2xl">
                         Сортировать по:</div>
                     <div class="flex gap-2">
-                        <button onclick="season()"
-                            class="bg-gray-500 text-white focus:outline-none focus:bg-gray-500 focus:ring-2 focus:ring-gray-500 focus:text-white font-bold py-2 px-5 rounded transition-colors">
+                        <button onclick="season()"  id="season"
+                        style="background: rgb(66, 66, 66)"  class="text-white focus:text-white font-bold py-2 px-5 rounded transition-colors">
                             Cезонам</button>
-                        <button onclick="chronology()"
-                            class="bg-gray-500 text-white focus:outline-none focus:bg-gray-500 focus:ring-2 focus:ring-gray-500 focus:text-white font-bold py-2 px-5 rounded transition-colors">
+                        <button onclick="chronology()"  id="chronology"
+                        style="background: #7f7f8f"  class="text-white focus:text-white font-bold py-2 px-5 rounded transition-colors">
                             Хронологии</button>
                     </div>
 
@@ -271,6 +273,10 @@
     }
     function chronology() {
         number = 1;
+        var season = document.getElementById('season');
+    var chronology = document.getElementById('chronology');
+    season.style.backgroundColor = '#7f7f8f';
+    chronology.style.backgroundColor = 'rgb(66, 66, 66)';
         if (subtitles) {
             document.getElementById('content').innerHTML = `  @foreach($years as $year)
       <x-chronologySubtitles :year="$year" :chronologies="$chronologies" :allchronology="$allchronology" />
@@ -284,6 +290,11 @@
     }
     function season() {
         number = 0;
+        var season = document.getElementById('season');
+    var chronology = document.getElementById('chronology');
+   
+    season.style.backgroundColor = 'rgb(66, 66, 66)';
+    chronology.style.backgroundColor = '#7f7f8f';
         if (subtitles) {
             document.getElementById('content').innerHTML = ` @foreach($seasons as $season)
                 <x-movieSubtitles  :season="$season" :movies="$movies" />
@@ -297,7 +308,10 @@
     }
     function toggleSubtitles() {
         subtitles = true;
-    
+        var voiceover = document.getElementById('voiceover');
+    var subtitle = document.getElementById('subtitles');
+    voiceover.style.backgroundColor = '#7f7f8f';
+    subtitle.style.backgroundColor = 'rgb(66, 66, 66)';
         if (number === 0) {
             season();
         } else {
@@ -306,7 +320,10 @@
     }
     function togglevoiceover() {
         subtitles = false;
-  
+        var voiceover = document.getElementById('voiceover');
+    var subtitle = document.getElementById('subtitles');
+    voiceover.style.backgroundColor = 'rgb(66, 66, 66)';
+    subtitle.style.backgroundColor = '#7f7f8f';
         if (number === 0) {
             season();
         } else {
