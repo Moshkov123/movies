@@ -8,35 +8,6 @@ use Illuminate\Http\Request;
 
 class VideoController extends Controller
 {
-    public function index()
-    {
-        $movies = new Movies();
-        $seasons = []; 
-        $year = [];
-        $allchronology =$movies->orderBy('chronology')->get();
-        $allMovies = $movies->orderBy('season')->orderBy('number')->get();
-
-        // Check if movies are retrieved successfully
-        if ($allMovies) {
-            // Iterate over each movie to extract the season
-            foreach ($allMovies as $movie) {
-                if (!in_array($movie->season, $seasons)) {
-                    $seasons[] = $movie->season;
-                }
-            }
-        }
-        $chronologies = Chronology::all();
-
-        // Iterate over each chronology to extract the year
-        foreach ($chronologies as $chronology) {
-            if (!in_array($chronology->chronology, $year)) {
-                $year[] = $chronology->chronology;
-            }
-        }
-    
-        return view('movies', ['movies' => $allMovies, 'seasons' => $seasons, 'allchronology'=>$allchronology, 'chronologies' => $chronologies, 'years' => $year]);
-    }
-
     public function main()
     {
         $movies = new Movies();

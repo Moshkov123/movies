@@ -15,7 +15,6 @@
             <span class="block sm:inline">{{ session('success') }}</span>
           </div>
           @endif
-          <button onclick="navigateTo('{{ route('control-movies') }}')" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Фильмы</button>
   
           <div class="flex flex-col">
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -32,8 +31,3 @@
     </div>
   </div>
 </x-app-layout>
-<script>
-    function navigateTo(url) {
-        window.location.href = url;
-    }
-</script>>
