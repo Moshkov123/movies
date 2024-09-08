@@ -26,7 +26,7 @@
               </div>
             </div>
           </div>
-          <button onclick="navigateTo('{{ route('management-edit') }}')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Редактировать</button>
+          <button onclick="navigateTo('{{ route('management-edit')}}')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Редактировать</button>
         </div>
       </div>
     </div>
